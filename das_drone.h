@@ -45,4 +45,5 @@
 class DAS_CONTROLLER{
   private:
     uint8_t running_checksum;
+    bool sentence_begin;
 }
