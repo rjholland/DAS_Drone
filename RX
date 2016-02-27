@@ -1,1 +1,11 @@
 
+
+
+
+
+bool receive(char received_byte){
+  
+  switch(received_byte){
+    case',':
+      running_checksum^=
+    case'$':
