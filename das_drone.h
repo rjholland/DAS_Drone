@@ -42,3 +42,7 @@
 #define MSP_BIND 240
 #define MSP_EEPROM_WRITE 250
 
+class DAS_CONTROLLER{
+  private:
+    uint8_t running_checksum;
+}
