@@ -46,4 +46,6 @@ class DAS_CONTROLLER{
   private:
     uint8_t running_checksum;
     bool sentence_begin;
+    bool transmit_successful;
+    uint8_t transmit_running_xor;
 }
