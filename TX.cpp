@@ -2,7 +2,8 @@
 
 
 
-
+DAS_CONTROLLER::DAS_CONTROLLER()
+  : received_id[3]('/0')
 
 
 bool transmit(uint8_t data_id,uint16_t rc_data[],unit8_t data_size){
