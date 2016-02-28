@@ -2,7 +2,7 @@
 
 //From flight controller
 
-#define MSP_IDENT 100
+#define MSP_IDENT 100,
 #define MSP_STATUS 101
 #define MSP_RAW_IMU 102
 #define MSP_SERVO 103
