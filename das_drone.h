@@ -1,4 +1,4 @@
-
+#include <stdlib.h>
 
 //From flight controller
 
@@ -48,4 +48,6 @@ class DAS_CONTROLLER{
     bool sentence_begin;
     bool transmit_successful;
     uint8_t transmit_running_xor;
+    uint8_t sentence_length;
+    char received_id[4];
 }
