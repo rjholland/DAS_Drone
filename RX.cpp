@@ -25,8 +25,8 @@ bool DAS_CONTROLLER::receive(char received_byte){
   }
   
   bool DAS_CONTROLLER::retrieve_id_structure(unit8_t id){
-    switch(id){
-      case MSP_IDENT:
-        return MSP_IDENT_BYTES;
-    }
+   uint8_t msp_structure[][]{{MSP_IDENT,7},{MSP_STATUS,11},{MSP_RAW_IMU,18},{MSP_SERVO,32},{MSP_MOTOR,32},{MSP_RC,32},{MSP_RAW_GPS,16},
+                          {MSP_COMP_GPS,5},{MSP_ATTITUDE,6},{MSP_ALTITUDE,6},{MSP_ANALOG,7},{MSP_RC_TUNING,7},{MSP_PID,30},{MSP_BOX,20},
+                          {MSP_MISC,22},{MSP_MOTOR_PINS,8},{MSP_SERVO_CONF,56}};
+    
   }
