@@ -10,7 +10,7 @@ bool DAS_CONTROLLER::receive(char received_byte){
     sentence_length++;
   }
   else if(sentence_length==6){
-    retrieve_id_structure();
+    retrieve_id_structure(atoi(received_id));
   }
   
   else{ 
@@ -24,6 +24,9 @@ bool DAS_CONTROLLER::receive(char received_byte){
       sentence_length++;
   }
   
-  bool DAS_CONTROLLER::retrieve_id_structure(){
-    switch()
+  bool DAS_CONTROLLER::retrieve_id_structure(unit8_t id){
+    switch(id){
+      case MSP_IDENT:
+        return MSP_IDENT_BYTES;
+    }
   }
