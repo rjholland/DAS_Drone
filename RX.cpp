@@ -7,7 +7,7 @@ bool DAS_CONTROLLER::receive(char received_byte,uint *parsed_data_bytes){
   
   bool valid_sentence=false;
   if ((sentence_length>5)&&(sentence_length<(6+data_length)))
-    parsed_data_bytes[sentence_length-6]=received_byte;
+    *parsed_data_bytes[sentence_length-6]=received_byte;
     sentence_length++;
   else if ((sentence_length>3)&&(sentence_length<6)){
     received_id[sentence_length-3];
