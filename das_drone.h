@@ -55,4 +55,5 @@ class DAS_CONTROLLER{
     uint8_t last;
     uint8_t middle;
     uint8_t n;
+    uint8_t data_length;
 }
