@@ -4,6 +4,9 @@
 
 DAS_CONTROLLER::DAS_CONTROLLER()
   : received_id[3]('/0')
+  , first(0)
+  , last(n-1)
+  , middle(first+last/2)
 
 
 bool transmit(uint8_t data_id,uint16_t rc_data[],unit8_t data_size){
