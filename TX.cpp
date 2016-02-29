@@ -9,7 +9,7 @@ DAS_CONTROLLER::DAS_CONTROLLER()
   , middle(first+last/2)
 
 
-bool transmit(uint8_t data_id,uint16_t rc_data[],unit8_t data_size){
+bool DAS_CONTROLLER::transmit(uint8_t data_id,uint16_t rc_data[],unit8_t data_size){
 
   Serial1.print("$M<");
   Serial1.print(data_size);
