@@ -51,4 +51,8 @@ class DAS_CONTROLLER{
     uint8_t transmit_running_xor;
     uint8_t sentence_length;
     char received_id[4];
+    uint8_t first;
+    uint8_t last;
+    uint8_t middle;
+    uint8_t n;
 }
