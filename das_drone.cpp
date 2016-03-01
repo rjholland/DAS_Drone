@@ -3,7 +3,6 @@
 
 struct SEND_DATA_STRUCTURE{
 uint16_t raw_rc[8];
-char preamble[5]={'$','M',',','<',','};
 };
 
 SEND_DATA_STRUCTURE stream;
@@ -44,30 +43,10 @@ uint32_t timer = 0;
 void loop()
 {
   if (millis() - timer > frequency) { // manage the updating freq of all the controlling information
-    SendData();  //read the buttons and the joysticks data
+    transmit(selected_id,stream.raw_rc,length_in_bytes);  //read the buttons and the joysticks data
     DataUpdate();
     timer = millis();
   }
-}
-
-void SendData(){
-  for(int i=0;i<6;i++){
-  Serial1.print(stream.preamble[i]);
-  Serial.print(stream.preamble[i]);
-  }
-  Serial1.print(array_length);
-  Serial.print(array_length);
-  Serial1.print(message_id);
-  Serial.print(message_id);
-  for (int i = 0; i < 4; i++){
-  Serial1.print(stream.raw_rc[i]);
-  Serial.print(stream.raw_rc[i]);
-  }
-  Serial1.print(',');
-  Serial.print(',');
-  Serial1.print(checksum());
-  Serial.print(checksum());
-  Serial.println();
 }
      
 void DataUpdate() {
@@ -86,13 +65,6 @@ uint16_t control_mapper(uint16_t signal,uint8_t factor){
  return(augmented_signal);
 }
 
-uint8_t checksum(){
-  uint8_t CS^=array_length;
-  CS=CS^message_id;
-  for (int i = 0;i < array_length;i++)
-  (stream.raw_rc);
-  return(CS)
-}
 float fscale( float originalMin, float originalMax, float newBegin, float
 newEnd, float inputValue, float curve){
 
