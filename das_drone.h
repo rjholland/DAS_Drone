@@ -1,7 +1,17 @@
+
+#ifndef das_drone.h
+#define das_drone.h
+
+//Standard Librarys
 #include <stdlib.h>
 
-//From flight controller
+//Custom Files
+#include <rx.cpp>
+#include <tx.cpp>
+#include <das_drone.cpp>
+#include <math_func.cpp>
 
+//From flight controller
 #define MSP_IDENT 100,
 #define MSP_STATUS 101
 #define MSP_RAW_IMU 102
@@ -26,7 +36,6 @@
 
 
 //To flight controller
-
 #define MSP_SET_MOTOR 214
 #define MSP_SET_RAW_RC 200
 #define MSP_SET_RAW_GPS 201
