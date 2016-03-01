@@ -8,6 +8,7 @@ uint16_t raw_rc[8];
 SEND_DATA_STRUCTURE stream;
 
 int frequency = 30;
+bool rc_active=false;
 
 #define virbrationMotorPin 2
 #define control_factor 3
