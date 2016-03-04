@@ -4,7 +4,7 @@
 
 DAS_CONTROLLER::DAS_CONTROLLER()
   : received_id[3]('/0')
-  , data_length[3]('/0')
+  , receive_length[3]('/0')
   , first(0)
   , last(17-1)
   , middle(first+last/2)
