@@ -65,5 +65,6 @@ class DAS_CONTROLLER{
     uint8_t middle;
     uint8_t n;
     uint8_t data_length;
-    uint_t receive_running_xor;
+    uint8_t receive_running_xor;
+    unit8_t received_data_bytes;
 }
