@@ -1,3 +1,11 @@
+/* Dynamic Automated Sytems
+   MSP Compatible Drone Controller
+   Author: Reece Holland
+   
+   Primary Header File.
+*/
+
+
 
 #ifndef das_drone.h
 #define das_drone.h
@@ -52,6 +60,17 @@
 #define MSP_BIND 240
 #define MSP_EEPROM_WRITE 250
 
+//Prototypes
+void setup();
+void InitIO();
+void loop();
+void DataUpdate();
+uint16_t control_mapper(uint16_t signal,uint8_t factor);
+float fscale( float originalMin, float originalMax, float newBegin, float
+newEnd, float inputValue, float curve);
+bool DAS_CONTROLLER::transmit(uint8_t data_id,uint16_t send_data[],unit8_t data_size);
+bool DAS_CONTROLLER::receive(char received_byte,uint *parsed_data_bytes);
+
 class DAS_CONTROLLER{
   private:
     uint8_t running_checksum;
@@ -71,3 +90,4 @@ class DAS_CONTROLLER{
     char CS[4];
     
 }
+#endif
