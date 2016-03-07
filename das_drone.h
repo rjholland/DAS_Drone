@@ -14,10 +14,9 @@
 #include <stdlib.h>
 
 //Custom Files
-#include <rx.cpp>
-#include <tx.cpp>
-#include <das_drone.cpp>
-#include <math_func.cpp>
+#include <rx.h>
+#include <tx.h>
+#include <math_func.h>
 
 //From flight controller
 #define MSP_IDENT 100,
