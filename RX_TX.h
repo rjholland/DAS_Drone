@@ -1,11 +1,11 @@
 
-
 #ifndef RX_TX.h
 #define RX_TX.h
 
 #include <stdint.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include "arduino.h"
 
 //From flight controller
 #define MSP_IDENT 100,
@@ -49,6 +49,15 @@
 #define MSP_EEPROM_WRITE 250
 
 class DAS_CONTROLLER{
+  public:
+	bool receive(char received_byte,uint16_t *parsed_data_bytes);
+	bool transmit(uint8_t data_id,uint16_t send_data[],uint8_t data_size);
+	DAS_CONTROLLER(){
+	received_id[3]='/0';
+	CS[4]='/0';
+	received_length[3]='/0';
+	sentence_length=0;
+	}
   private:
     uint8_t running_checksum;
     bool sentence_begin;
@@ -67,8 +76,7 @@ class DAS_CONTROLLER{
     char CS[4];
     
 };
-bool DAS_CONTROLLER::receive(char received_byte,uint16_t *parsed_data_bytes);
-bool DAS_CONTROLLER::transmit(uint8_t data_id,uint16_t send_data[],uint8_t data_size);
+
 
 
 
