@@ -14,7 +14,7 @@ SEND_DATA_STRUCTURE stream;
 
 int frequency = 30;
 bool rc_active=false;
-
+uint8_t array_length=200;
 #define virbrationMotorPin 2
 #define control_factor 3
 #define zero 800
@@ -26,16 +26,15 @@ bool rc_active=false;
 #define max_height_dif 100
 #define max_height_dif_thrust 100
 #define height_lock_factor 0
-#define array_length 16
-#define message_id 200
 
-
+#define rc_control_id 200
+DAS_CONTROLLER DS;
 void setup()
 {
   Serial.begin(9600);
   Serial1.begin(9600);
   InitIO();             //Initialize the inputs/outputs and the buffers
- 
+  
 }
 
 void InitIO() {
@@ -49,8 +48,8 @@ uint32_t timer = 0;
 void loop()
 {
   if (millis() - timer > frequency) { // manage the updating freq of all the controlling information
-    transmit(selected_id,stream.raw_rc,length_in_bytes);  //read the buttons and the joysticks data
     DataUpdate();
+    DS.transmit(rc_control_id,stream.raw_rc,array_length);
     timer = millis();
   }
 }
