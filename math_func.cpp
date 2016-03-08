@@ -1,5 +1,4 @@
-
-
+#include "math_func.h"
 
 
 
@@ -12,7 +11,7 @@ newEnd, float inputValue, float curve){
   float zeroRefCurVal = 0;
   float normalizedCurVal = 0;
   float rangedValue = 0;
-  boolean invFlag = 0;
+  bool invFlag = 0;
 
 
   // condition curve parameter
