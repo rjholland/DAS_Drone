@@ -12,9 +12,9 @@ uint16_t raw_rc[8];
 
 SEND_DATA_STRUCTURE stream;
 
-int frequency = 30;
+int frequency = 500;
 bool rc_active=false;
-uint8_t array_length=200;
+uint8_t array_length=16;
 #define virbrationMotorPin 2
 #define control_factor 3
 #define zero 800

@@ -5,14 +5,14 @@
 
 bool DAS_CONTROLLER::transmit(uint8_t data_id,uint16_t send_data[],uint8_t data_size){
 
-  Serial1.print('$M<');
+  Serial1.print("$M<");
   Serial1.print(data_size);
-  transmit_running_xor=data_size;
+  transmit_running_xor=(data_size);
   Serial1.print(data_id);
-  transmit_running_xor^=data_id;
-  for(int i=0;i<data_size;i++){
+  transmit_running_xor^=(data_id);
+  for(int i=0;i<(data_size/2);i++){
     Serial1.print(send_data[i]);
-    transmit_running_xor^=send_data[i];
+    transmit_running_xor^=(send_data[i]);
     }
   Serial1.print(transmit_running_xor);
   return transmit_successful;
