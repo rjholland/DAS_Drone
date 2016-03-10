@@ -69,3 +69,22 @@ uint16_t control_mapper(uint16_t signal,uint8_t factor){
    augmented_signal=neutral;
  return(augmented_signal);
 }
+unit16_t thrust_mapper(){
+  
+  int increment_thrust;////////////workonfunction
+  if ((stream.l_y > mid_upper_range) && (thrust < full)){
+   increment_thrust = fscale(mid_upper_range,max_range,0,100,stream.l_y,4);
+   if ((thrust + increment_thrust)>full){
+     thrust=full;
+   }else 
+   thrust = thrust + increment_thrust;  
+  }
+  else if ((stream.l_y < mid_lower_range)&& (thrust > zero)){
+  increment_thrust = fscale(0,mid_lower_range,0,100,stream.l_y,4);
+  if ((thrust - increment_thrust)<zero){
+     thrust=zero;
+   }else 
+   thrust = thrust - increment_thrust;  
+  }  
+  return(thrust);
+}
