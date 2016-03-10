@@ -15,6 +15,7 @@ SEND_DATA_STRUCTURE stream;
 int frequency = 500;
 bool rc_active=false;
 uint8_t array_length=16;
+uint16_t thrust=zero;
 #define virbrationMotorPin 2
 #define control_factor 3
 #define zero 800
@@ -55,8 +56,9 @@ void loop()
 }
      
 void DataUpdate() {
- for (int i = 0; i < 4; i++)
+ for (int i = 0; i < 3; i++)
     stream.raw_rc[i] = control_mapper(analogRead(i + 2),control_factor);
+    stream.raw_rc[3] = thrust_mapper(analogRead(5));
 }
 
 uint16_t control_mapper(uint16_t signal,uint8_t factor){
@@ -69,18 +71,19 @@ uint16_t control_mapper(uint16_t signal,uint8_t factor){
    augmented_signal=neutral;
  return(augmented_signal);
 }
-unit16_t thrust_mapper(){
+
+unit16_t thrust_mapper(uint16_t thrust_signal){
   
   int increment_thrust;////////////workonfunction
-  if ((stream.l_y > mid_upper_range) && (thrust < full)){
-   increment_thrust = fscale(mid_upper_range,max_range,0,100,stream.l_y,4);
+  if ((thrust_signal > mid_upper_range) && (thrust < full)){
+   increment_thrust = fscale(mid_upper_range,max_range,0,100,thrust_signal,4);
    if ((thrust + increment_thrust)>full){
      thrust=full;
    }else 
    thrust = thrust + increment_thrust;  
   }
-  else if ((stream.l_y < mid_lower_range)&& (thrust > zero)){
-  increment_thrust = fscale(0,mid_lower_range,0,100,stream.l_y,4);
+  else if ((thrust_signal < mid_lower_range)&& (thrust > zero)){
+  increment_thrust = fscale(0,mid_lower_range,0,100,thrust_signal,4);
   if ((thrust - increment_thrust)<zero){
      thrust=zero;
    }else 
