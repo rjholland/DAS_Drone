@@ -13,10 +13,11 @@ uint16_t raw_rc[8];
 SEND_DATA_STRUCTURE stream;
 
 int frequency = 500;
-bool rc_active=false;
+bool rc_active;
 uint8_t array_length=16;
 uint16_t thrust=zero;
 #define virbrationMotorPin 2
+#define left_z2 16
 #define control_factor 3
 #define zero 800
 #define full 2000
@@ -41,6 +42,7 @@ void setup()
 void InitIO() {
   for (int i = 0; i < 5; i++) pinMode(i, INPUT);
   pinMode(virbrationMotorPin, OUTPUT);
+  pinMode(left_z2, INPUT)
   digitalWrite(virbrationMotorPin, LOW); // Stop shacking of the gamepad
 }
 
@@ -49,7 +51,10 @@ uint32_t timer = 0;
 void loop()
 {
   if (millis() - timer > frequency) { // manage the updating freq of all the controlling information
+   if ((digitalRead(left_Z2))==true)
     DataUpdate();
+    else
+    safety();
     DS.transmit(rc_control_id,stream.raw_rc,array_length);
     timer = millis();
   }
@@ -90,4 +95,11 @@ unit16_t thrust_mapper(uint16_t thrust_signal){
    thrust = thrust - increment_thrust;  
   }  
   return(thrust);
+}
+
+void safety(){
+   for (int i = 0; i < 3; i++)
+    stream.raw_rc[i] = neutral;
+    stream.raw_rc[3] = zero;
+
 }
